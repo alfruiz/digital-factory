@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Digital Factory</title>
+  <style type="text/css">
+  .tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+    border-color:#aabcfe;
+  }
+  .tg td{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#aabcfe;
+    color:#669;
+    background-color:#e8edff;
+  }
+  .tg th{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:#aabcfe;
+    color:#039;
+    background-color:#b9c9fe;
+  }
+  .tg .tg-kss1{
+    font-weight:bold;
+    background-color:#666699;
+    color:#ffffff;
+    text-align:center;
+    vertical-align:top
+  }
+  .tg .tg-yw4l{
+    vertical-align:top
+  }
+  .highlight{
+    font-weight: 600;
+  }
+  .highlight.method{
+    background-color: yellow;
+    font-size: x-small;
+  }
+  .highlight.info{
+    text-decoration: underline;
+    font-size: large;
+  }
+  </style>
+</head>
+<body>
+  <h1>Exam for Digital factory</h1>
+  <h2>API DOCUMENTATION</h2>
+  <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-yw4l">METHOD</th>
+        <th class="tg-yw4l">URL</th>
+        <th class="tg-yw4l">DESCRIPTION</th>
+        <th class="tg-yw4l">BODY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-yw4l">GET</td>
+        <td class="tg-yw4l">/api/numbers/:token</td>
+        <td class="tg-yw4l">retrive the saved information inside the token</td>
+        <td class="tg-yw4l"></td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">POST</td>
+        <td class="tg-yw4l">/api/token</td>
+        <td class="tg-yw4l">create Token</td>
+        <td class="tg-yw4l"></td>
+      </tr>
+      <tr>
+        <td class="tg-yw4l">PUT</td>
+        <td class="tg-yw4l">/api/numbers/:token</td>
+        <td class="tg-yw4l">update content of token<br></td>
+        <td class="tg-yw4l">{ numbers: < data > }</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>STEPS</h2>
+  <ol>
+    <li>Create a token (please <span class="highlight info">keep it</span>, you have to send it after the exam) - <span class="highlight method">POST</span></li>
+    <li>Update the info of your token - <span class="highlight method">PUT</span></li>
+    <li>Get data of your token - <span class="highlight method">GET</span></li>
+  </ol>
+</body>
+</html>
