@@ -7,7 +7,7 @@ import uuid from 'uuid'
 
 // get all constants
 const app = express()
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3000
 const min = 60
 
 //local memory
@@ -34,7 +34,7 @@ function removeMemory() {
   let currentDate = new Date()
   for (let k in memory) {
     if (memory[k].expire - currentDate.getTime() < 0) {
-      console.log(`remove token: ${k}`)
+      //console.log(`remove token: ${k}`)
       delete memory[k]
     }
   }
@@ -46,7 +46,7 @@ function checkInMemory(token) {
 
 // GET METHODS
 app.get('/', (req, res) => {
-  res.sendFile('doc.html', { root: __dirname })
+  res.sendFile('views/doc.html', { root: __dirname })
 })
 
 app.get('/api/tokens', (req, res) => {
@@ -167,5 +167,5 @@ app.put('/api/numbers/:token', (req, res) => {
 })
 
 app.listen(port, function() {
-  console.log(`Exam app listening on port ${port}!`)
+  //console.log(`Exam app listening on port ${port}!`)
 })
