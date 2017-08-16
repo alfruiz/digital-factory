@@ -15,7 +15,7 @@
     "lint": "eslint app/app.js",
     "babel-node": "babel-node --presets=/*a*/",
     "start": "nodemon --exec \"npm run lint && babel-node --presets=es2015 -- app/app.js\"",
-    "postinstall": "npm run babel-node --presets=es2015 -- app/app.js"
+    "postinstall": "./node_modules/.bin/babel-node --presets=es2015 -- app/app.js"
   },
   "devDependencies": {
     "babel": "^6.23.0",
