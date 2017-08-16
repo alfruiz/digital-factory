@@ -17,6 +17,7 @@ module.exports = {
             "unix"
         ],
         "quotes": 0,
-        "semi": 0
+        "semi": 0,
+        "no-console": 1
     }
 };
