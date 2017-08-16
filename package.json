@@ -12,11 +12,11 @@
     "uuid": "^3.1.0"
   },
   "scripts": {
-    "lint": "eslint app/app.js",
+    "lint": "eslint app/scripts/app.js",
     "babel-node": "babel-node --presets=/*a*/",
-    "dev": "nodemon --exec \"npm run lint && babel-node --presets=es2015 -- app/app.js\"",
-    "build": "babel app/app.js --presets=es2015 --out-file ./build/app.js",
-    "start": "node build/app.js"
+    "dev": "nodemon --exec \"npm run lint && babel-node --presets=es2015 -- app/scripts/app.js\"",
+    "build": "babel app/scripts/app.js --presets=es2015 --out-file  app/build/app.js",
+    "start": "node app/build/app.js"
   },
   "devDependencies": {
     "babel": "^6.23.0",

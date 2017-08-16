@@ -4,6 +4,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import uuid from 'uuid'
+import path from 'path'
 
 // get all constants
 const app = express()
@@ -46,7 +47,8 @@ function checkInMemory(token) {
 
 // GET METHODS
 app.get('/', (req, res) => {
-  res.sendFile('views/doc.html', { root: __dirname })
+  res.sendFile(path.resolve('app/views/doc.html'))
+  // res.sendFile('../views/doc.html', { root: __dirname })
 })
 
 app.get('/api/tokens', (req, res) => {
