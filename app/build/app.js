@@ -29,7 +29,7 @@ var min = 60;
 //local memory
 var memory = {
   'test-token': {
-    numbers: '3,4,6'
+    numbers: [3, 4, 6]
   }
 
   // configure app to use bodyParser()
@@ -69,8 +69,8 @@ app.get('/api/tokens', function (req, res) {
   res.json(Object.keys(memory));
 });
 
-app.get('/api/numbers/:token', function (req, res) {
-  var token = req.params.token;
+app.get('/api/numbers', function (req, res) {
+  var token = req.get('Authorization') || 0;
   if (!token) {
     return res.status(400).json({
       msg: 'Token is needed'
@@ -105,8 +105,8 @@ app.delete('/api/tokens/:password', function (req, res) {
   res.json(Object.keys(memory));
 });
 
-app.delete('/api/token/:token', function (req, res) {
-  var token = req.params.token;
+app.delete('/api/token', function (req, res) {
+  var token = req.get('Authorization') || 0;
   if (!token) {
     return res.status(400).json({
       msg: 'Token is needed'
@@ -129,20 +129,27 @@ app.delete('/api/token/:token', function (req, res) {
 // POST METHODS
 app.post('/api/token', function (req, res) {
   var token = _uuid2.default.v4();
+  var name = req.body.name || 0;
+
+  if (!name) {
+    return res.status(401).json({
+      msg: 'Name is needed to create token'
+    });
+  }
 
   memory[token] = {
-    expire: expireDate(min)
+    expire: expireDate(min),
+    name: name
   };
 
   res.status(200).json({
-    msg: 'Please keep your token',
     token: token
   });
 });
 
 //PUT Methods
-app.put('/api/numbers/', function (req, res) {
-  var token = req.get('Authorization');
+app.put('/api/numbers', function (req, res) {
+  var token = req.get('Authorization') || 0;
   var num = req.body.numbers || 0;
   if (!token) {
     return res.status(401).json({
