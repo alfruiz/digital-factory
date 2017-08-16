@@ -1,1 +1,1 @@
-web: babel-node --presets=es2015 -- app/app.js
+web: node build/app.js
