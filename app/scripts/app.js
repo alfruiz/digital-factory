@@ -14,7 +14,7 @@ const min = 60
 //local memory
 let memory = {
   'test-token': {
-    numbers: '3,4,6'
+    numbers: [3,4,6]
   }
 }
 
@@ -55,8 +55,8 @@ app.get('/api/tokens', (req, res) => {
   res.json(Object.keys(memory))
 })
 
-app.get('/api/numbers/:token', (req,res) => {
-  let token = req.params.token;
+app.get('/api/numbers', (req,res) => {
+  let token = req.get('Authorization') || 0
   if (!token) {
     return res.status(400).json({
       msg: 'Token is needed'
@@ -92,8 +92,8 @@ app.delete('/api/tokens/:password', (req, res) => {
   res.json(Object.keys(memory))
 })
 
-app.delete('/api/token/:token', (req, res) => {
-  let token = req.params.token;
+app.delete('/api/token', (req, res) => {
+  let token = req.get('Authorization') || 0
   if (!token) {
     return res.status(400).json({
       msg: 'Token is needed'
@@ -117,21 +117,28 @@ app.delete('/api/token/:token', (req, res) => {
 // POST METHODS
 app.post('/api/token', (req, res) => {
   let token = uuid.v4()
+  let name = req.body.name || 0;
+
+  if (!name) {
+    return res.status(401).json({
+      msg: 'Name is needed to create token'
+    })
+  }
 
   memory[token] = {
-    expire: expireDate(min)
+    expire: expireDate(min),
+    name: name
   }
 
   res.status(200).json({
-    msg: 'Please keep your token',
     token: token
   })
 })
 
 
 //PUT Methods
-app.put('/api/numbers/', (req, res) => {
-  let token = req.get('Authorization')
+app.put('/api/numbers', (req, res) => {
+  let token = req.get('Authorization') || 0
   let num = req.body.numbers || 0;
   if (!token) {
     return res.status(401).json({

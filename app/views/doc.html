@@ -50,10 +50,13 @@
     background-color: yellow;
     font-size: x-small;
   }
-  .highlight.info{
+  .under{
     text-decoration: underline;
+  }
+  .info{
     font-size: large;
   }
+
   </style>
 </head>
 <body>
@@ -66,33 +69,58 @@
         <th class="tg-yw4l">URL</th>
         <th class="tg-yw4l">DESCRIPTION</th>
         <th class="tg-yw4l">BODY</th>
+        <th class="tg-yw4l">RESPONSE</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td class="tg-yw4l">GET</td>
-        <td class="tg-yw4l">/api/numbers/:token</td>
-        <td class="tg-yw4l">retrive the saved information inside the token</td>
+        <td class="tg-yw4l">/api/numbers</td>
+        <td class="tg-yw4l">
+        Get the saved information inside the token<br>
+        Notes:<br>
+        * token need to be send on <span class="highlight method">HEADERS</span> as <span class="highlight under">Authorization</span></td>
         <td class="tg-yw4l"></td>
+        <td class="tg-yw4l">
+        STATUS: 200<br>
+        { numbers: [array_of_number] }
+        </td>
       </tr>
       <tr>
         <td class="tg-yw4l">POST</td>
         <td class="tg-yw4l">/api/token</td>
-        <td class="tg-yw4l">create Token</td>
-        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l">
+        Create Token, with name<br>
+        Notes:<br>
+        * <span class="highlight under">< data ></span> is a String
+        </td>
+        <td class="tg-yw4l">{ name: < data > }</td>
+        <td class="tg-yw4l">
+          STATUS: 200<br>
+          { token: 'newtoken' }
+        </td>
       </tr>
       <tr>
         <td class="tg-yw4l">PUT</td>
-        <td class="tg-yw4l">/api/numbers/:token</td>
-        <td class="tg-yw4l">update content of token<br></td>
+        <td class="tg-yw4l">/api/numbers</td>
+        <td class="tg-yw4l">
+        update content of token<br>
+        Notes:<br>
+        * token need to be send on <span class="highlight method">HEADERS</span> as <span class="highlight under">Authorization</span><br>
+        * <span class="highlight under">< data ></span> is an Array
+        </td>
         <td class="tg-yw4l">{ numbers: < data > }</td>
+        <td class="tg-yw4l">
+          STATUS: 200<br>
+          { msg: 'numbers are upload to token: < token >' }
+        </td>
       </tr>
     </tbody>
   </table>
 
   <h2>STEPS</h2>
   <ol>
-    <li>Create a token (please <span class="highlight info">keep it</span>, you have to send it after the exam) - <span class="highlight method">POST</span></li>
+    <li>Create a token (please <span class="highlight under info">keep it</span>, you have to send it after the exam) - <span class="highlight method">POST</span></li>
     <li>Update the info of your token - <span class="highlight method">PUT</span></li>
     <li>Get data of your token - <span class="highlight method">GET</span></li>
   </ol>
