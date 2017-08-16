@@ -128,29 +128,28 @@ app.post('/api/token', (req, res) => {
 
 
 //PUT Methods
-app.put('/api/numbers/:token', (req, res) => {
-  let token = req.params.token;
+app.put('/api/numbers/', (req, res) => {
+  let token = req.get('Authorization')
+  let num = req.body.numbers || 0;
   if (!token) {
-    return res.status(400).json({
-      msg: 'Token is needed'
+    return res.status(401).json({
+      msg: 'Token is needed on the HEAD'
     })
   }
 
   if (!checkInMemory(token)) {
-    return res.status(400).json({
+    return res.status(410).json({
       msg: 'Token is not found, please review API Documentation'
     })
   }
 
-  if (!req.body.numbers) {
+  if (!num || !Array.isArray(num) ) {
     return res.status(400).json({
-      msg: 'body of POST should contain numbers'
+      msg: 'the body should have an specific structure, please review API Documentation'
     })
   }
 
-
-
-  if (req.body.numbers.length === 0) {
+  if (num.length === 0) {
     return res.status(400).json({
       msg: 'numbers are empty'
     })
@@ -158,7 +157,7 @@ app.put('/api/numbers/:token', (req, res) => {
 
   memory[token] = {
     expireDate: expireDate(min),
-    numbers: req.body.numbers
+    numbers: num
   }
 
   res.status(200).json({
@@ -167,5 +166,5 @@ app.put('/api/numbers/:token', (req, res) => {
 })
 
 app.listen(port, function() {
-  //console.log(`Exam app listening on port ${port}!`)
+  console.log(`Exam app listening on port ${port}!`)
 })

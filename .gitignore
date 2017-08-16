@@ -16,4 +16,4 @@ yarn-error.log
 yarn.lock
 
 # General
-*.DS_Store
+.DS_Store
