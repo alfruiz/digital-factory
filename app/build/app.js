@@ -12,13 +12,17 @@ var _uuid = require('uuid');
 
 var _uuid2 = _interopRequireDefault(_uuid);
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // get all constants
-var app = (0, _express2.default)(); // app.js
+// app.js
 
 // call the packages we need
-
+var app = (0, _express2.default)();
 var port = process.env.PORT || 3000;
 var min = 60;
 
@@ -57,7 +61,8 @@ function checkInMemory(token) {
 
 // GET METHODS
 app.get('/', function (req, res) {
-  res.sendFile('views/doc.html', { root: __dirname });
+  res.sendFile(_path2.default.resolve('app/views/doc.html'));
+  // res.sendFile('../views/doc.html', { root: __dirname })
 });
 
 app.get('/api/tokens', function (req, res) {
