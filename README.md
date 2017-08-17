@@ -9,6 +9,12 @@ Repository dedicated to the test of "Digital Factory" exam
 
 Note: May the Force be with you ;)
 
+## Installing and Dependencies
+* You will need [NodeJS](https://nodejs.org/en/download/)
+* Clone this repo `git clone git@github.com:alfruiz/digital-factory.git`
+* Install all packages and dependencies `npm i`
+* Run the applicaiton `npm start`
+
 ## Deployment
 
 * [BabelJs](https://babeljs.io/) - The compiler language for es6
