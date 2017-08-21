@@ -1,4 +1,6 @@
 # Digital Factory Exam
+[![Known Vulnerabilities](https://snyk.io/test/github/alfruiz/digital-factory/badge.svg)](https://snyk.io/test/github/alfruiz/digital-factory)
+
 
 Repository dedicated to the test of "Digital Factory" exam
 
