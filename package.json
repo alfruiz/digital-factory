@@ -19,11 +19,11 @@
   },
   "devDependencies": {
     "babel": "^6.23.0",
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
-    "babel-preset-es2015": "^6.24.1",
     "babel-preset-env": "^1.6.0",
-    "eslint": "^4.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.5.0",
     "nodemon": "^1.11.0"
   },
   "engines": {
