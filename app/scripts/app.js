@@ -69,7 +69,7 @@ app.get('/api/numbers', (req,res) => {
     })
   }
 
-  res.status(200).json(memory[token]);
+  res.status(200).json(memory[token].numbers);
 })
 
 
